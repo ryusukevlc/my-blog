@@ -9,7 +9,8 @@ public class ArticlesDAOTest {
 	
 	public static void main(String[] args) {
 		
-		getAllTest();
+//		getAllTest();
+		addArticleTest();
 		
 	}
 	
@@ -23,6 +24,11 @@ public class ArticlesDAOTest {
 			System.out.println(article.getCreated_at());
 			System.out.println(article.getUpdated_at());
 		}
+	}
+	
+	public static void addArticleTest() {
+		ArticlesDAO articlesDAO = new ArticlesDAO();
+//		articlesDAO.addArticle(article);
 	}
 
 }

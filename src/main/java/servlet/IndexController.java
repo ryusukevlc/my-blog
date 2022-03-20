@@ -14,40 +14,36 @@ import model.Article;
 import model.GetArticlesLogic;
 
 
-@WebServlet("admin/portal/articles")
-public class ArticlesController extends HttpServlet {
+@WebServlet("/")
+public class IndexController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
 
-    public ArticlesController() {
+    public IndexController() {
         super();
-
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//articleの取得
+		//articlesの取得
 		GetArticlesLogic getArticlesLogic = new GetArticlesLogic();
 		ArrayList<Article> articles = getArticlesLogic.getArticles();
 		
-		//値チェック
+		//nullチェック
 		if (articles != null && articles.size() > 0) {
 			//リクエストスコープに登録
-			request.setAttribute("articles", articles);			
+			request.setAttribute("articles", articles);
 		}
 		
-		//フォワード
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/articles.jsp");
+		//トップ画面にフォワード
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/index.jsp");
 		dispatcher.forward(request, response);
-		
 	}
 
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-		
-		
+
 	}
 
 }

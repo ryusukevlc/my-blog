@@ -7,6 +7,7 @@
 <title>Morgenrot</title>
 </head>
 <body>
-
+    <h1>Morgenrot</h1>
+    <jsp:include page="articles.jsp"/>
 </body>
 </html>

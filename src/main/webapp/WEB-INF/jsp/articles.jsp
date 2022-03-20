@@ -15,12 +15,17 @@ ArrayList<Article> articles = (ArrayList<Article>) request.getAttribute("article
 <title>Morgenrot</title>
 </head>
 <body>
-    <h1>Morgenrot</h1>
-     
+    
+     <% if (articles != null && articles.size() > 0) { %>
     <% for(Article article : articles) { %>
         <div>
             <p><%= article.getTitle() %></p>
             <p><%= article.getContent() %></p>
+        </div>
+    <%} %>
+    <%} else { %>
+        <div>
+            <p>まだ記事が投稿されていません。</p>
         </div>
     <%} %>
     

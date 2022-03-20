@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -30,7 +31,11 @@ public class ArticlesDAO {
 		}
 	}
 	
-	
+	/**
+	 * getAll()
+	 * 記事をすべて取得するメソッド
+	 * @return
+	 */
 	public ArrayList<Article> getAll() {
 		
 		Connection con = null;
@@ -62,7 +67,7 @@ public class ArticlesDAO {
 		} catch (Exception e) {
 			
 			System.out.println(e);
-			System.out.println("selectAll()で例外が発生しました！");
+			System.out.println("getAll()で例外が発生しました！");
 			
 		} finally {
 			
@@ -85,9 +90,51 @@ public class ArticlesDAO {
 			}
 			
 		}
-		
 		return articles;
+	}
+	
+	/**
+	 * addArticle()
+	 * 記事を投稿するメソッド
+	 */
+	public void addArticle(Article article) {
 		
+		Connection con = null;
+		PreparedStatement stmt = null;
+		
+		String sql = "INSERT INTO articles (title, content) VALUES ( ?, ? )";
+		
+		try {
+			con = getConnection();
+			stmt = con.prepareStatement(sql);
+			
+			stmt.setString(1, article.getTitle());
+			stmt.setString(2, article.getContent());
+			
+			stmt.executeUpdate();
+			
+			
+		} catch (Exception e) {
+			System.out.println(e);
+			System.out.println("insert処理に失敗しました！");
+		} finally {
+			
+			if (stmt != null) {
+				try {
+					stmt.close();
+				} catch (Exception e) {
+					System.out.println(e);
+				}
+			}
+			if (con != null) {
+				try {
+					con.close();
+				} catch (Exception e) {
+					System.out.println(e);
+				}
+			}
+			
+		}
 	}
 	
 }
