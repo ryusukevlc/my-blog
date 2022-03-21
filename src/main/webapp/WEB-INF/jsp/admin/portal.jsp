@@ -7,6 +7,7 @@
 <title>Morgenrot</title>
 </head>
 <body>
-    <a href="admin/articles">記事管理</a>
+    <a href="/Morgenrot/admin/articles">記事管理</a>
+    <a href="/Morgenrot/home">home</a>
 </body>
 </html>
