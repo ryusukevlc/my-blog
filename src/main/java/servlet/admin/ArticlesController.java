@@ -1,4 +1,4 @@
-package servlet;
+package servlet.admin;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,7 +14,7 @@ import model.Article;
 import model.GetArticlesLogic;
 
 
-@WebServlet("admin/portal/articles")
+@WebServlet("/admin/articles")
 public class ArticlesController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
