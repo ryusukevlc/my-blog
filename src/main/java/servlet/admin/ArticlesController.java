@@ -31,20 +31,36 @@ public class ArticlesController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		
-		//articleの取得
-		GetArticlesLogic getArticlesLogic = new GetArticlesLogic();
-		ArrayList<Article> articles = getArticlesLogic.getArticles();
-		
-		//値チェック
-		if (articles != null && articles.size() > 0) {
-			//リクエストスコープに登録
-			request.setAttribute("articles", articles);			
+		String type = request.getParameter("type");
+	    
+		if ("create".equals(type)) {
+		    //記事管理画面から記事作成画面に遷移
+		    
+		    //フォワード
+		    RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/admin/articleManagement/createArticle.jsp");
+		    dispatcher.forward(request, response);
+		    
+		    
+		    
+		    
+		} else {
+		    //ポータル画面から記事管理画面へ遷移
+    	
+    		//articleの取得
+    		GetArticlesLogic getArticlesLogic = new GetArticlesLogic();
+    		ArrayList<Article> articles = getArticlesLogic.getArticles();
+    		
+    		//値チェック
+    		if (articles != null && articles.size() > 0) {
+    			//リクエストスコープに登録
+    			request.setAttribute("articles", articles);			
+    		}
+    		
+    		//フォワード
+    		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/admin/articleManagement/articles.jsp");
+    		dispatcher.forward(request, response);
+    		
 		}
-		
-		//フォワード
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/admin/articleManagement/articles.jsp");
-		dispatcher.forward(request, response);
 		
 	}
 
