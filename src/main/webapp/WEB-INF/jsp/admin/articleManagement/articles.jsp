@@ -30,5 +30,7 @@ ArrayList<Article> articles = (ArrayList<Article>) request.getAttribute("article
         </div>
     <%} %>
     
+    <a href="/Morgenrot/admin/portal">ポータルへ戻る</a>
+    
 </body>
 </html>
