@@ -14,7 +14,7 @@ import model.Article;
 import model.GetArticlesLogic;
 
 
-@WebServlet("/")
+@WebServlet("/home")
 public class IndexController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
