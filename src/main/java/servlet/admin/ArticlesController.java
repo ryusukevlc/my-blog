@@ -14,6 +14,11 @@ import model.Article;
 import model.GetArticlesLogic;
 
 
+/**
+ * 記事管理画面のController
+ * @author ryusuke_arata
+ *
+ */
 @WebServlet("/admin/articles")
 public class ArticlesController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
