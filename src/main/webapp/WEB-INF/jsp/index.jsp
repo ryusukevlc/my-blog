@@ -28,5 +28,6 @@ ArrayList<Article> articles = (ArrayList<Article>) request.getAttribute("article
             <p>まだ記事が投稿されていません。</p>
         </div>
     <%} %>
+    <a href="/Morgenrot/admin/portal">管理者</a>
 </body>
 </html>
