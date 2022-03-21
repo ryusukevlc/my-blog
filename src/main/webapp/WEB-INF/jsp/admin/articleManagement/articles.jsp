@@ -15,6 +15,7 @@ ArrayList<Article> articles = (ArrayList<Article>) request.getAttribute("article
 <title>Morgenrot</title>
 </head>
 <body>
+    <a href="/Morgenrot/admin/articles?type=create">作成</a>
     
      <% if (articles != null && articles.size() > 0) { %>
     <% for(Article article : articles) { %>
