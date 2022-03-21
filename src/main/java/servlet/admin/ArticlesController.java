@@ -43,7 +43,7 @@ public class ArticlesController extends HttpServlet {
 		}
 		
 		//フォワード
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/articles.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/admin/articleManagement/articles.jsp");
 		dispatcher.forward(request, response);
 		
 	}
