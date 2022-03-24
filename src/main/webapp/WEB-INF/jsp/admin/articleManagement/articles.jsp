@@ -10,11 +10,9 @@ ArrayList<Article> articles = (ArrayList<Article>) request.getAttribute("article
  
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Morgenrot</title>
-</head>
+    <%@ include file="/WEB-INF/jsp/admin/common/head.jsp" %>
 <body>
+    <%@ include file="/WEB-INF/jsp/admin/common/header.jsp" %>
     <a href="/Morgenrot/admin/articles?type=create">作成</a>
     
      <% if (articles != null && articles.size() > 0) { %>
@@ -32,5 +30,6 @@ ArrayList<Article> articles = (ArrayList<Article>) request.getAttribute("article
     
     <a href="/Morgenrot/admin/portal">ポータルへ戻る</a>
     
+    <%@ include file="/WEB-INF/jsp/admin/common/footer.jsp" %>
 </body>
 </html>
