@@ -13,13 +13,14 @@ List<String> errors =(List<String>)request.getAttribute("errors");
     <%@ include file="/WEB-INF/jsp/admin/common/head.jsp" %>
 <body>
     <%@ include file="/WEB-INF/jsp/admin/common/header.jsp" %>
-    <h1>記事作成</h1>
+    <div class="grid-container">
+    <h4>記事作成</h4>
     
     <form action="/Morgenrot/admin/articles" method="post">
         <input type="text" name="title">
-        <input type="text" name="content">
+        <textarea rows="20" cols="" name="content"></textarea>
         <input type="hidden" name="type" value="create">
-        <input type="submit" value="登録">
+        <input class="button" type="submit" value="登録">
     </form>
     
     <!-- 
@@ -35,6 +36,7 @@ List<String> errors =(List<String>)request.getAttribute("errors");
     <%} %>
     
     <a href="/Morgenrot/admin/articles">記事管理画面に戻る</a>
+    </div>
     <%@ include file="/WEB-INF/jsp/admin/common/footer.jsp" %>
 </body>
 </html>

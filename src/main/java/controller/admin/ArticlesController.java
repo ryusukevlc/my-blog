@@ -81,6 +81,7 @@ public class ArticlesController extends HttpServlet {
 	        String title = request.getParameter("title");	        
 	        String content = request.getParameter("content");
 	        
+	        //確認用のコンソール出力
 	        System.out.println(title);
 	        System.out.println(content);
 	        
