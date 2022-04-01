@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Article;
-import model.GetArticlesLogic;
+import model.article.Article;
+import model.article.GetArticlesLogic;
 
 
 @WebServlet("/home")

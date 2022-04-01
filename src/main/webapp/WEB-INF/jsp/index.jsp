@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
     
     <%@ page import="java.util.ArrayList" %> 
-<%@ page import="model.Article" %>
+<%@ page import="model.article.Article" %>
 
 <%
 ArrayList<Article> articles = (ArrayList<Article>) request.getAttribute("articles");

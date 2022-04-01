@@ -3,7 +3,7 @@ package validator;
 import java.util.ArrayList;
 import java.util.List;
 
-import model.Article;
+import model.article.Article;
 
 public class ArticleValidator {
     

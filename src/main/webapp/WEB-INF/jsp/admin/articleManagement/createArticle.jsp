@@ -16,9 +16,9 @@ List<String> errors =(List<String>)request.getAttribute("errors");
     <div class="grid-container">
     <h4>記事作成</h4>
     
-    <form action="/Morgenrot/admin/articles" method="post">
-        <input type="text" name="title">
-        <textarea rows="20" cols="" name="content"></textarea>
+    <form action="/Morgenrot/admin/articleManagement/articleCreate" method="post">
+        <input type="text" name="title" placeholder="タイトル">
+        <textarea rows="20" cols="" name="content" placeholder="内容"></textarea>
         <input type="hidden" name="type" value="create">
         <input class="button" type="submit" value="登録">
     </form>
@@ -35,7 +35,7 @@ List<String> errors =(List<String>)request.getAttribute("errors");
         
     <%} %>
     
-    <a href="/Morgenrot/admin/articles">記事管理画面に戻る</a>
+    <a href="/Morgenrot/admin/articleManagement/articles">記事管理画面に戻る</a>
     </div>
     <%@ include file="/WEB-INF/jsp/admin/common/footer.jsp" %>
 </body>

@@ -2,8 +2,8 @@ package test;
 
 import java.util.ArrayList;
 
-import model.Article;
-import model.GetArticlesLogic;
+import model.article.Article;
+import model.article.GetArticlesLogic;
 
 public class GetArticlesLogicTest {
 	
