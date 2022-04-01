@@ -1,4 +1,4 @@
-package controller.admin;
+package controller.admin.articleManagement;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,10 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import model.Article;
-import model.GetArticlesLogic;
-import model.PostArticleLogic;
-import validator.ArticleValidator;
+import model.article.Article;
+import model.article.GetArticlesLogic;
+import model.article.PostArticleLogic;
 
 
 /**
@@ -22,7 +21,7 @@ import validator.ArticleValidator;
  * @author ryusuke_arata
  *
  */
-@WebServlet("/admin/articles")
+@WebServlet("/admin/articleManagement/articles")
 public class ArticlesController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -33,21 +32,6 @@ public class ArticlesController extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		String type = request.getParameter("type");
-	    
-		if ("create".equals(type)) {
-		    //記事管理画面から記事作成画面に遷移
-		    
-		    //フォワード
-		    RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/admin/articleManagement/createArticle.jsp");
-		    dispatcher.forward(request, response);
-		    
-		    
-		    
-		    
-		} else {
-		    //ポータル画面から記事管理画面へ遷移
     	
     		//articleの取得
     		GetArticlesLogic getArticlesLogic = new GetArticlesLogic();
@@ -59,71 +43,49 @@ public class ArticlesController extends HttpServlet {
     			request.setAttribute("articles", articles);			
     		}
     		
-    		//フォワード
+    		//記事管理画面に遷移
     		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/admin/articleManagement/articles.jsp");
     		dispatcher.forward(request, response);
-    		
-		}
+    	
 		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	    
 	    request.setCharacterEncoding("UTF-8");
 		
 	    String type = request.getParameter("type");
 	    
-	    //新規作成の場合
-	    if ("create".equals(type)) {
+	    if ("delete".equals(type)) {
+	        //削除の場合
 	        
-	        //文字化け対策
+	        //idの取得
+	        int id = Integer.parseInt(request.getParameter("id"));
 	        
-	        //リクエストスコープから入力した記事を取得
-	        String title = request.getParameter("title");	        
-	        String content = request.getParameter("content");
+	        //削除処理
+	        PostArticleLogic postArticleLogic = new PostArticleLogic();
+	        boolean isDeleted = postArticleLogic.deleteArticle(id);
 	        
-	        //確認用のコンソール出力
-	        System.out.println(title);
-	        System.out.println(content);
-	        
-	        //beanにセットする
-	        Article article = new Article();
-	        article.setTitle(title);
-	        article.setContent(content);
-	        
-	        //バリデーション
-	        ArticleValidator articleValidator = new ArticleValidator();
-	        List<String> errors = articleValidator.postValidate(article);
-	        
-	        //バリデーションが問題無い場合
-	        if (errors.isEmpty()) {
-	            //記事を登録する
-	            PostArticleLogic postArticleLogic = new PostArticleLogic();
-	            postArticleLogic.addArticle(article);
+	        if (isDeleted) {
+	            //削除できた場合
 	            
-	            //記事管理画面に表示する用の記事をarticlesテーブルから取得する。
+	            //記事管理画面表示用に全記事を取得する
 	            GetArticlesLogic getArticlesLogic = new GetArticlesLogic();
-	             List<Article> articles = getArticlesLogic.getArticles();
-	             
-	            //記事管理画面に表示する用の記事をリクエストスコープにセットする
+	            List<Article> articles = getArticlesLogic.getArticles();
+	            
+	            //全記事をリクエストスコープにセットする
 	            request.setAttribute("articles", articles);
 	            
-	            //記事管理画面にフォワードする
-	            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/admin/articleManagement/articles.jsp");
-	            dispatcher.forward(request, response);
+	            //記事管理画面を再描画
+	            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/WEB-INF/jsp/admin/articleManagement/articles.jsp");
+	            requestDispatcher.forward(request, response);
 	            
 	        } else {
-	            //入力値に問題がある場合
-	            //バリデーション結果をリクエストスコープにセットする
-	            request.setAttribute("errors", errors);
-	            
-	            //記事作成画面にフォワード
-	            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/admin/articleManagement/createArticle.jsp");
-	            dispatcher.forward(request, response);
-	        }	       
+	            //削除出来なかった場合
+	            System.out.println("記事を削除できませんでした。");
+	        }
 	        
-	        
-	    } else if ("edit".equals(type)) {
-	        //編集の場合
+
 	        
 	    } else {
 	        

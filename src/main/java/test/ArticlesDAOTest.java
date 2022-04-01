@@ -3,14 +3,14 @@ package test;
 import java.util.ArrayList;
 
 import dao.ArticlesDAO;
-import model.Article;
+import model.article.Article;
 
 public class ArticlesDAOTest {
 	
 	public static void main(String[] args) {
 		
-//		getAllTest();
-		addArticleTest();
+		getAllTest();
+//		addArticleTest();
 		
 	}
 	

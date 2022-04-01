@@ -1,11 +1,12 @@
-package model;
+package model.article;
 
 import java.io.Serializable;
 import java.util.Date;
 
 public class Article implements Serializable {
 	
-	private String title;
+    private int id;
+    private String title;
 	private String content;
 	private Date created_at;
 	private Date updated_at;
@@ -20,8 +21,16 @@ public class Article implements Serializable {
 		this.created_at = addDate;
 		this.updated_at = updateDate;
 	}
+	
+    public int getId() {
+	    return id;
+	}
 
-	public String getTitle() {
+	public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
 		return title;
 	}
 	public void setTitle(String title) {

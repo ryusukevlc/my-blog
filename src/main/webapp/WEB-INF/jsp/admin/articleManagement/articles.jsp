@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 
 <%@ page import="java.util.ArrayList" %> 
-<%@ page import="model.Article" %>
+<%@ page import="model.article.Article" %>
 
 <%
 ArrayList<Article> articles = (ArrayList<Article>) request.getAttribute("articles");
@@ -17,8 +17,8 @@ ArrayList<Article> articles = (ArrayList<Article>) request.getAttribute("article
 <div class="grid-container">
 <div class="grid-x grid-margin-x">
     
-    <a class="button" href="/Morgenrot/admin/articles?type=create">作成</a>
-    
+    <a class="button" href="/Morgenrot/admin/articleManagement/articleCreate">作成</a>
+
     <table class="hover">
         <thead>
             <tr>
@@ -29,9 +29,19 @@ ArrayList<Article> articles = (ArrayList<Article>) request.getAttribute("article
         <tbody>
              <% if (articles != null && articles.size() > 0) { %>
              <% for(Article article : articles) { %>
-                <tr>
+                <tr class="">
                     <td><%= article.getTitle() %></td>
                     <td><%= article.getContent() %></td>
+                    <td style="text-align:right; ">
+                        <a class="small success button" href="/Morgenrot/admin/articleManagement/articleEdit?id=<%= article.getId() %>">編集</a>
+                    </td>
+                   <td style="">
+                    <form action="/Morgenrot/admin/articleManagement/articles" method="post" name="deleteForm">
+                        <input type="hidden" name="id" value="<%= article.getId() %>">
+                        <input type="hidden" name="type" value="delete">
+                        <button class="small alert button" onclick="articleDelete()">削除</button>
+                    </form>
+                   </td>
                 </tr>
              <%} %>
              <%} else { %>
@@ -41,6 +51,7 @@ ArrayList<Article> articles = (ArrayList<Article>) request.getAttribute("article
              <%} %>
         </tbody>
     </table>
+    
     
     <a href="/Morgenrot/admin/portal">ポータルへ戻る</a>
     
