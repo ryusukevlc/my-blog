@@ -24,17 +24,16 @@ public class ArticlesDAO {
     private static Connection getConnection() {
     
         try {
-
+            
             //DBコネクションの取得
             Connection con = DriverManager.getConnection(URL, USER, PASSWORD);
             return con;
             
         } catch(Exception e) {
-            
             System.out.println("DB接続時に例外が発生しました！");
             throw new IllegalStateException(e);
-            
         }
+        
     }
     
     /**
@@ -72,8 +71,7 @@ public class ArticlesDAO {
             }
             
         } catch (Exception e) {
-            
-            System.out.println(e);
+            e.printStackTrace();
             System.out.println("getAll()で例外が発生しました！");
             
         } finally {
@@ -107,7 +105,7 @@ public class ArticlesDAO {
     public Article getOne(int id) {
         
         Connection con = null;
-        PreparedStatement stmt = null;
+        PreparedStatement pstmt = null;
         
         //sql生成
         String sql = "select * from articles where id = ?";
@@ -117,11 +115,11 @@ public class ArticlesDAO {
         
         try {
             con = getConnection();
-            stmt = con.prepareStatement(sql);
+            pstmt = con.prepareStatement(sql);
             
-            stmt.setInt(1, id);
+            pstmt.setInt(1, id);
             
-            ResultSet rs = stmt.executeQuery();
+            ResultSet rs = pstmt.executeQuery();
 
             //クエリ結果からarticleを取得する
             if (rs.next()) {
@@ -130,14 +128,14 @@ public class ArticlesDAO {
             }
         
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
             System.out.println("記事取得時にエラーが発生しました!");
             
         } finally {
             
-            if (stmt != null ) {
+            if (pstmt != null ) {
                 try {
-                    stmt.close();
+                    pstmt.close();
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
@@ -155,8 +153,6 @@ public class ArticlesDAO {
         
         //記事を返却
         return article;
-        
-        
     }
     
     
@@ -167,28 +163,30 @@ public class ArticlesDAO {
     public void add(Article article) {
         
         Connection con = null;
-        PreparedStatement stmt = null;
+        PreparedStatement pstmt = null;
         
         String sql = "INSERT INTO articles (title, content) VALUES ( ?, ? )";
         
         try {
             con = getConnection();
-            stmt = con.prepareStatement(sql);
+            pstmt = con.prepareStatement(sql);
             
-            stmt.setString(1, article.getTitle());
-            stmt.setString(2, article.getContent());
+            pstmt.setString(1, article.getTitle());
+            pstmt.setString(2, article.getContent());
             
-            stmt.executeUpdate();
+            int i = pstmt.executeUpdate();
             
+            //念のためinsertした件数をコンソールに出力
+            System.out.println(i + "件挿入しました。");
             
         } catch (Exception e) {
-            System.out.println(e);
+            e.printStackTrace();
             System.out.println("insert処理に失敗しました！");
         } finally {
             
-            if (stmt != null) {
+            if (pstmt != null) {
                 try {
-                    stmt.close();
+                    pstmt.close();
                 } catch (Exception e) {
                     System.out.println(e);
                 }
@@ -213,30 +211,33 @@ public class ArticlesDAO {
     public boolean update(Article article, int id) {
         
         Connection con = null;
-        PreparedStatement stmt = null;
+        PreparedStatement pstmt = null;
         
         String sql = "update articles set title = ?, content = ? where id = ?";
         
         try {
             con = getConnection();
-            stmt= con.prepareStatement(sql);
+            pstmt= con.prepareStatement(sql);
             
-            stmt.setString(1, article.getTitle());
-            stmt.setString(2, article.getContent());
-            stmt.setInt(3, id);
+            pstmt.setString(1, article.getTitle());
+            pstmt.setString(2, article.getContent());
+            pstmt.setInt(3, id);
             
-            stmt.executeUpdate();
+            int i = pstmt.executeUpdate();
 
+            //更新した件数をコンソールに出力
+            System.out.println(i + "件更新しました。");
             
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace();
+            System.out.println("記事更新時にエラーが発生しました。");
             return false;
             
         } finally {
             
-            if (stmt != null) {
+            if (pstmt != null) {
                 try {
-                    stmt.close();                   
+                    pstmt.close();                  
                 }  catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
@@ -244,7 +245,7 @@ public class ArticlesDAO {
             
             if (con != null) {
                 try {
-                    stmt.close();
+                    pstmt.close();
                 } catch (Exception e) {
                     System.out.println(e.getMessage());
                 }
@@ -263,27 +264,30 @@ public class ArticlesDAO {
     public boolean deleteOne(int id) {
         
         Connection con = null;
-        PreparedStatement stmt = null;
+        PreparedStatement pstmt = null;
         
         String sql = "delete from articles where id= ?";
         
         try {
             con = getConnection();
-            stmt = con.prepareStatement(sql);
+            pstmt = con.prepareStatement(sql);
             
-            stmt.setInt(1, id);
+            pstmt.setInt(1, id);
             
-            stmt.executeUpdate();
+            int i = pstmt.executeUpdate();
             
+            //削除した件数をコンソールに出力
+            System.out.println(i + "件削除しました。");
             
         } catch (Exception e ) {
-            System.out.println("sql delete時にエラーが発生しました！" + e.getMessage());
+            e.printStackTrace();
+            System.out.println("sql delete時にエラーが発生しました！");
             return false;
         } finally {
             
-            if (stmt != null) {
+            if (pstmt != null) {
                    try {
-                        stmt.close();
+                        pstmt.close();
                     } catch (Exception e) {
                         System.out.println(e.getMessage());
                     }
