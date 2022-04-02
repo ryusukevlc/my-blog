@@ -16,6 +16,8 @@ ArrayList<Article> articles = (ArrayList<Article>) request.getAttribute("article
 </head>
 <body>
     <h1>Morgenrot</h1>
+    
+    <!-- 取得した記事を表示する -->
      <% if (articles != null && articles.size() > 0) { %>
     <% for(Article article : articles) { %>
         <div>
