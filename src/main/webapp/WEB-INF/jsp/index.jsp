@@ -10,21 +10,28 @@ ArrayList<Article> articles = (ArrayList<Article>) request.getAttribute("article
 
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Morgenrot</title>
-</head>
+  <%@ include file="/WEB-INF/jsp/admin/common/head.jsp" %>
 <body>
     <h1>Morgenrot</h1>
     
     <!-- 取得した記事を表示する -->
      <% if (articles != null && articles.size() > 0) { %>
+     <div class="grid-container">
+     <div class="grid-x grid-margin-x small-up-3 ">
     <% for(Article article : articles) { %>
-        <div>
-            <p><%= article.getTitle() %></p>
-            <p><%= article.getContent() %></p>
+        <div class="cell">
+            <div class="card">
+                <div class="card-divider">
+                </div>
+                <div class="card-section">
+                    <h5><%= article.getTitle() %></h5>
+                    <p><%= article.getContent() %></p>
+                </div>
+            </div>
         </div>
     <%} %>
+     </div>
+     </div>
     <%} else { %>
         <div>
             <p>まだ記事が投稿されていません。</p>
