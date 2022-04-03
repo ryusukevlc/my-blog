@@ -14,7 +14,7 @@ public class ArticlesDAOTest {
 		
 	}
 	
-	public static void getAllTest() {
+	private static void getAllTest() {
 		ArticlesDAO articlesDAO = new ArticlesDAO();
 		ArrayList<Article> articles = articlesDAO.getAll();
 		
@@ -26,7 +26,7 @@ public class ArticlesDAOTest {
 		}
 	}
 	
-	public static void addArticleTest() {
+	private static void addArticleTest() {
 		ArticlesDAO articlesDAO = new ArticlesDAO();
 //		articlesDAO.addArticle(article);
 	}
