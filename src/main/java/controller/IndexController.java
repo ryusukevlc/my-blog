@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -32,9 +33,27 @@ public class IndexController extends HttpServlet {
 		
 		//nullチェック
 		if (articles != null && articles.size() > 0) {
-			//リクエストスコープに登録
-			request.setAttribute("articles", articles);
+			
+		     //タイトルを指定文字数以内に加工する（js書きたくないからここに書いちゃいます）
+	        List<String> titles = new ArrayList<>();
+	        int charNum = 30;
+	        for (Article article : articles) {
+	            String title = article.getTitle();
+	            if (title.length() > charNum) {
+	                String shortTitle = title.substring(0, charNum);
+	                titles.add(shortTitle + "...");
+	            } else {
+	                titles.add(title);
+	            }
+	        }
+	        
+	           //リクエストスコープに登録
+            request.setAttribute("articles", articles);
+            request.setAttribute("titles", titles);
+	        
 		}
+		
+
 		
 		//トップ画面にフォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/index.jsp");
