@@ -1,31 +1,35 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-    <%@ page import="java.util.ArrayList" %> 
+<%@ page import="java.util.ArrayList" %> 
 <%@ page import="model.article.Article" %>
+<%@ page import="java.util.List" %>
 
 <%
 ArrayList<Article> articles = (ArrayList<Article>) request.getAttribute("articles");
+List<String> titles = (List<String>)request.getAttribute("titles");
 %>   
 
 <!DOCTYPE html>
 <html>
-  <%@ include file="/WEB-INF/jsp/admin/common/head.jsp" %>
+  <%@ include file="/WEB-INF/jsp/viewerCommon/head.jsp" %>
 <body>
-    <h1>Morgenrot</h1>
+    <%@ include file="/WEB-INF/jsp/viewerCommon/header.jsp" %>
     
     <!-- 取得した記事を表示する -->
      <% if (articles != null && articles.size() > 0) { %>
      <div class="grid-container">
      <div class="grid-x grid-margin-x small-up-3 ">
-    <% for(Article article : articles) { %>
+    <% for(int i = 0 ; articles.size() > i ; i++) { %>
         <div class="cell">
-            <div class="card">
-                <div class="card-divider">
+            <div class="card" style="height: 380px;">
+                <img alt="dummy" src="http://placekitten.com/g/640/340">
+                <div class="card-divider" style="background-color: white;">
+                    <p>tags（仮）</p><!-- あとで実装する -->
                 </div>
-                <div class="card-section">
-                    <h5><%= article.getTitle() %></h5>
-                    <p><%= article.getContent() %></p>
+                <div class="card-section" style="position: relative;">
+                    <h5 style='font-family: "游ゴシック", "Yu Gothic";'><strong><%= titles.get(i)  %></strong></h5>
+                    <small style="position:absolute; bottom: 20px;"><%= articles.get(i).getCreated_at() %></small>
                 </div>
             </div>
         </div>
@@ -38,5 +42,6 @@ ArrayList<Article> articles = (ArrayList<Article>) request.getAttribute("article
         </div>
     <%} %>
     <a href="/Morgenrot/admin/portal">管理者</a>
+        <%@ include file="/WEB-INF/jsp/viewerCommon/footer.jsp" %>
 </body>
 </html>
