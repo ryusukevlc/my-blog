@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+body {
+	font-family: "游ゴシック", "Yu Gothic";
+}
+
+.card {
+	margin-top: 20px;
+}
