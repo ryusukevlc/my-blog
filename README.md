@@ -3,15 +3,15 @@ personal Blog site.
 
 under construction :construction:
 
-### Languages
+## Languages 
 - Java
 - JavaScript
 
-### Development Methodology
+## Development Methodology
 - kanban
 - issues
 
-### Tools
+## Tools
 - figma (for screen flow diagram)
 
-### WebAPI
+## WebAPI
