@@ -10,6 +10,8 @@
     <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.4/dist/js/foundation.min.js"></script>
     
     <script type="text/javascript" src="/Morgenrot/js/main.js"></script>
+    <!-- font-awesome CDN -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/all.css">
     
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/main.css">
 <title>Morgenrot</title>
