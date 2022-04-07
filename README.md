@@ -15,3 +15,6 @@ under construction :construction:
 - figma (for screen flow diagram)
 
 ## WebAPI
+
+## Testing Framework
+- JUnit
