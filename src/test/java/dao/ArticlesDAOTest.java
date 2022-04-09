@@ -1,8 +1,7 @@
-package test;
+package dao;
 
 import java.util.ArrayList;
 
-import dao.ArticlesDAO;
 import model.article.Article;
 
 public class ArticlesDAOTest {
