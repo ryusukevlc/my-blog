@@ -41,7 +41,6 @@ List<String> titles = (List<String>)request.getAttribute("titles");
             <p>まだ記事が投稿されていません。</p>
         </div>
     <%} %>
-    <a href="/Morgenrot/admin/portal">管理者</a>
         <%@ include file="/WEB-INF/jsp/viewerCommon/footer.jsp" %>
 </body>
 </html>
