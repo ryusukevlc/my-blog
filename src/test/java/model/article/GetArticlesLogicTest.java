@@ -1,9 +1,6 @@
-package test;
+package model.article;
 
 import java.util.ArrayList;
-
-import model.article.Article;
-import model.article.GetArticlesLogic;
 
 public class GetArticlesLogicTest {
 	
