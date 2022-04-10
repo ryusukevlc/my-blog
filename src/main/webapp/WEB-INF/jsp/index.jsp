@@ -21,18 +21,18 @@ List<String> titles = (List<String>)request.getAttribute("titles");
      <div class="grid-container">
      <div class="grid-x grid-margin-x small-up-3 ">
     <% for(int i = 0 ; articles.size() > i ; i++) { %>
-        <div class="cell">
+        <a href="#" class="cell">
             <div class="card" style="height: 380px;">
                 <img alt="dummy" src="http://placekitten.com/g/640/340">
                 <div class="card-divider" style="background-color: white;">
-                    <p>tags（仮）</p><!-- あとで実装する -->
+                    <object><a href="#" style="color: white;">tags（仮）</a></object><!-- あとで実装する -->
                 </div>
                 <div class="card-section" style="position: relative;">
                     <h5 style='font-family: "游ゴシック", "Yu Gothic";'><strong><%= titles.get(i)  %></strong></h5>
                     <small style="position:absolute; bottom: 20px;"><%= articles.get(i).getCreated_at() %></small>
                 </div>
             </div>
-        </div>
+        </a>
     <%} %>
      </div>
      </div>
