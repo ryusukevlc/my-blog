@@ -21,7 +21,7 @@ List<String> titles = (List<String>)request.getAttribute("titles");
      <div class="grid-container">
      <div class="grid-x grid-margin-x small-up-3 ">
     <% for(int i = 0 ; articles.size() > i ; i++) { %>
-        <a href="#" class="cell">
+        <a href="/Morgenrot/articleDetail?id=<%= articles.get(i).getId() %>" class="cell">
             <div class="card" style="height: 380px;">
                 <img alt="dummy" src="http://placekitten.com/g/640/340">
                 <div class="card-divider" style="background-color: white;">
