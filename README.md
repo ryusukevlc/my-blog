@@ -18,3 +18,10 @@ under construction :construction:
 
 ## Testing Framework
 - JUnit
+
+## Web Server
+- Apache
+
+## Application Server
+- Tomcat
+
