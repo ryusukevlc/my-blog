@@ -5,6 +5,9 @@
 <%@ page import="model.article.Article" %>
 <%@ page import="java.util.List" %>
 
+<!-- テストコメント develop -->
+<!-- テストコメント pull request practice -->
+
 <%
 ArrayList<Article> articles = (ArrayList<Article>) request.getAttribute("articles");
 List<String> titles = (List<String>)request.getAttribute("titles");
