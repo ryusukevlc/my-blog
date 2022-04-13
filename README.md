@@ -25,3 +25,5 @@ under construction :construction:
 ## Application Server
 - Tomcat
 
+## VPS
+- さくらのVPS
