@@ -6,6 +6,7 @@
 <%@ page import="java.util.List" %>
 
 <!-- テストコメント develop -->
+<!-- テストコメント pull request practice -->
 
 <%
 ArrayList<Article> articles = (ArrayList<Article>) request.getAttribute("articles");
