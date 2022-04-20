@@ -64,18 +64,22 @@ public class ArticleCreateController extends HttpServlet {
         if (errors.isEmpty()) {
             //記事を登録する
             PostArticleLogic postArticleLogic = new PostArticleLogic();
-            postArticleLogic.addArticle(article);
+            boolean isAdded = postArticleLogic.addArticle(article);
             
-            //記事管理画面に表示する用の記事をarticlesテーブルから取得する。
-            GetArticlesLogic getArticlesLogic = new GetArticlesLogic();
-             List<Article> articles = getArticlesLogic.getArticles();
-             
-            //記事管理画面に表示する用の記事をリクエストスコープにセットする
-            request.setAttribute("articles", articles);
-            
-            //記事管理画面にフォワードする
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/admin/articleManagement/articles.jsp");
-            dispatcher.forward(request, response);
+            if(isAdded) {
+	            //記事管理画面に表示する用の記事をarticlesテーブルから取得する。
+	            GetArticlesLogic getArticlesLogic = new GetArticlesLogic();
+	             List<Article> articles = getArticlesLogic.getArticles();
+	             
+	            //記事管理画面に表示する用の記事をリクエストスコープにセットする
+	            request.setAttribute("articles", articles);
+	            
+	            //記事管理画面にフォワードする
+	            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/admin/articleManagement/articles.jsp");
+	            dispatcher.forward(request, response);
+            } else {
+            	System.out.println("記事を作成できませんでした。");
+            }
             
         } else {
             //入力値に問題がある場合

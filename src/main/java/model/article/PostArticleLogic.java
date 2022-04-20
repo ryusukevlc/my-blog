@@ -9,9 +9,11 @@ public class PostArticleLogic {
      * 記事をテーブルに登録する
      * @param article
      */
-    public void addArticle(Article article) {
+    public boolean addArticle(Article article) {
         ArticlesDAO articleDAO = new ArticlesDAO();
-        articleDAO.add(article);
+        boolean isAdded = articleDAO.add(article);
+        
+        return isAdded;
     }
     
     

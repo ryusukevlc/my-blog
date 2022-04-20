@@ -201,7 +201,7 @@ public class ArticlesDAO {
 	 * addArticle()
 	 * 記事を投稿するメソッド
 	 */
-	public void add(Article article) {
+	public boolean add(Article article) {
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -223,6 +223,7 @@ public class ArticlesDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("insert処理に失敗しました！");
+			return false;
 		} finally {
 			
 			if (pstmt != null) {
@@ -241,6 +242,8 @@ public class ArticlesDAO {
 			}
 			
 		}
+		
+		return true;
 	}
 	
 	/**
