@@ -17,9 +17,8 @@ under construction :construction:
 ## WebAPI
 
 ## Testing Framework & Library
-- JUnit
+- JUnit5
 - Mockito
-- PowerMock
 
 ## Web Server
 - Apache
