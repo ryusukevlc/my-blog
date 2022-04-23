@@ -74,7 +74,7 @@ class PostArticleLogicTest {
 	@ParameterizedTest
 	@MethodSource("articlesForParameter")
 	@DisplayName("渡した引数を正しく受け取り、正しくリターンされるかまで確認する")
-	void argumentsTestForAddArticle(Article article, boolean bool) {
+	void argumentsTestForAddArticle(Article article, boolean bool) { //TODO
 		
 //		//モック生成
 //		when(mockArticlesDAO.add(article)).thenReturn(bool);
