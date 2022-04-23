@@ -19,6 +19,7 @@ under construction :construction:
 ## Testing Framework
 - JUnit
 - Mockito
+- PowerMock
 
 ## Web Server
 - Apache
