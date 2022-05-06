@@ -13,10 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 import model.article.Article;
 import model.article.GetArticlesLogic;
 import model.article.PostArticleLogic;
+import validator.ArticleValidator;
 
 /**
  * 記事編集画面のController
- * @author 荒田龍甫
+ * @author
  *
  */
 @WebServlet("/admin/articleManagement/articleEdit")
@@ -65,26 +66,45 @@ public class ArticleEditController extends HttpServlet {
 	    article.setTitle(title);
 	    article.setContent(content);
 	    
-	    //記事のアップデート処理
-	    PostArticleLogic postArticleLogic = new PostArticleLogic();
-	    boolean isUpdated = postArticleLogic.updateArticle(article, id);
+	    //バリデーション htmlインジェクション対策等もここで行う
+	    ArticleValidator validator = new ArticleValidator();
+	    List<String> errors = validator.postValidate(article);
 	    
-	    if (isUpdated) {
-	        
-	        GetArticlesLogic getArticlesLogic = new GetArticlesLogic();
-	        List<Article> articles = getArticlesLogic.getArticles();
-	        
-	        //記事管理画面表示用にリクエストスコープにセット
-	        request.setAttribute("articles", articles);
-	        
-	        //記事管理画面にフォワード
-	        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/admin/articleManagement/articles.jsp");
-	        dispatcher.forward(request, response);
-	        
+	    //バリデーションの結果、問題がない場合
+	    if (errors.isEmpty()) {
+	    	
+		    //記事のアップデート処理
+		    PostArticleLogic postArticleLogic = new PostArticleLogic();
+		    boolean isUpdated = postArticleLogic.updateArticle(article, id);
+		    
+		    if (isUpdated) {
+		        
+		        GetArticlesLogic getArticlesLogic = new GetArticlesLogic();
+		        List<Article> articles = getArticlesLogic.getArticles();
+		        
+		        //記事管理画面表示用にリクエストスコープにセット
+		        request.setAttribute("articles", articles);
+		        
+		        //記事管理画面にフォワード
+		        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/admin/articleManagement/articles.jsp");
+		        dispatcher.forward(request, response);
+		        
+		    } else {
+		        System.out.println("記事を更新できませんでした.");
+		    }
 	    } else {
-	        System.out.println("記事を更新できませんでした.");
+            //入力値に問題がある場合
+            //バリデーション結果をリクエストスコープにセットする
+	    	request.setAttribute("errors", errors);
+	    	
+	    	//編集中の内容をリクエストスコープにセットする。
+	    	request.setAttribute("article", article);
+	    	request.setAttribute("id", id);
+	    	
+	    	RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/admin/articleManagement/editArticle.jsp");
+	    	dispatcher.forward(request, response);
+	    	
 	    }
-	    
 	}
 
 }

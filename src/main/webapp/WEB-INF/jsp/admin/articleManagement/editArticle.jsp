@@ -1,13 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%@  page import="model.article.Article"%>
+<%@ page import="model.article.Article"%>
+<%@ page import="java.util.List"  %>
     
 <%
 
 Article article = (Article)request.getAttribute("article");
 
 int id = (int)request.getAttribute("id");
+
+List<String> errors = (List<String>)request.getAttribute("errors");
 %>
     
 <!DOCTYPE html>
@@ -25,6 +28,14 @@ int id = (int)request.getAttribute("id");
         <input type="hidden" name="id" value="<%= id%>">
         <input type="submit" value="完了" class="button">
     </form>
+    
+    <% if (errors != null && !errors.isEmpty()) { %>
+        <% for (String error : errors) { %>
+            <p><%= error %></p>
+        <% } %>
+    <% } %>
+    
+    <a href="/Morgenrot/admin/articleManagement/articles">記事管理画面に戻る</a>
     
     </div>
     <%@ include file="/WEB-INF/jsp/admin/common/footer.jsp" %>
