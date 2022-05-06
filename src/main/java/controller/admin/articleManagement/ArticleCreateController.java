@@ -56,7 +56,7 @@ public class ArticleCreateController extends HttpServlet {
         article.setTitle(title);
         article.setContent(content);
         
-        //バリデーション
+        //バリデーション htmlインジェクション対策等もここで行う。
         ArticleValidator articleValidator = new ArticleValidator();
         List<String> errors = articleValidator.postValidate(article);
         
