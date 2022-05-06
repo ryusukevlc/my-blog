@@ -166,6 +166,8 @@ public class ArticlesDAO {
 	        if (rs.next()) {
 	            article.setTitle(rs.getString("title"));
 	            article.setContent(rs.getString("content"));
+	            article.setCreated_at(rs.getDate("created_at"));
+	            article.setUpdated_at(rs.getDate("updated_at"));
 	        }
 	    
 	    } catch (Exception e) {
