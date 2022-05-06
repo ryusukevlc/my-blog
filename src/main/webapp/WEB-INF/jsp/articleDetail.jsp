@@ -19,7 +19,9 @@ Article article = (Article)request.getAttribute("article");
             <p class="cell small-2" style="">更新日：<%= article.getUpdated_at() %></p>
         </div>
         <h3 class="cell" style="text-align: center;"><%= article.getTitle() %></h3>
-        <p class="cell" style="text-align: center;"><%= article.getContent() %></p>
+        <div class="cell" style="text-align: center;">
+            <%= article.getContent() %>
+        </div>
     </div>
     
 
