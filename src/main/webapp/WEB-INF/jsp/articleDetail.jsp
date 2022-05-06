@@ -13,9 +13,14 @@ Article article = (Article)request.getAttribute("article");
 <body>
     <%@ include file="/WEB-INF/jsp/viewerCommon/header.jsp" %>
 
-
-        <h4><%= article.getTitle() %></h4>
-        <p><%= article.getContent() %></p>
+    <div class="grid-container" style="min-height: 100vh;">
+        <div class="grid-x grid-margin-x" style="">
+            <p class="cell small-2" style="">作成日：<%= article.getCreated_at() %></p>
+            <p class="cell small-2" style="">更新日：<%= article.getUpdated_at() %></p>
+        </div>
+        <h3 class="cell" style="text-align: center;"><%= article.getTitle() %></h3>
+        <p class="cell" style="text-align: center;"><%= article.getContent() %></p>
+    </div>
     
 
 
