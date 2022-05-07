@@ -3,7 +3,11 @@
 
 <header style="margin-bottom: 30px;">
     <div class="title-bar">
-        <h1 class="title-bar-title" style="margin: 10px;">Morgenrot <i class="fa-solid fa-mountain-sun" style="color: red;"></i></h1>
+        <h1 class="title-bar-title" style="margin: 10px;">
+            <a href="/Morgenrot/home" style="color: white;">
+                Morgenrot <i class="fa-solid fa-mountain-sun" style="color: red;"></i>
+            </a>
+        </h1>
     </div>
     <div class="top-bar" style="background-color:   #F5F5F5;">
         <div class="top-bar-left">
