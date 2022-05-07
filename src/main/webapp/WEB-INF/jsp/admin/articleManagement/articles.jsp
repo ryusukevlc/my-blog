@@ -39,7 +39,7 @@ ArrayList<Article> articles = (ArrayList<Article>) request.getAttribute("article
                     <form action="/Morgenrot/admin/articleManagement/articles" method="post" name="deleteForm">
                         <input type="hidden" name="id" value="<%= article.getId() %>">
                         <input type="hidden" name="type" value="delete">
-                        <button class="small alert button" onclick="articleDelete()">削除</button>
+                        <button class="small alert button" onclick=" return articleDelete()">削除</button>
                     </form>
                    </td>
                 </tr>
