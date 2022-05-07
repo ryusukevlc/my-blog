@@ -28,7 +28,7 @@ public class ArticleProcessing {
 	public Article reduceTheWordOfTitle(Article article, int wordCount) {
 		String title = article.getTitle();
 		if (title.length() > wordCount) {
-			title = title.substring(0, wordCount);
+			title = title.substring(0, wordCount) + "...";
 			article.setTitle(title);
 		}
 		
@@ -46,7 +46,7 @@ public class ArticleProcessing {
 	public Article reduceTheWordOfContent(Article article, int wordCount) {
 		String content = article.getContent();
 		if (content.length() > wordCount) {
-			content = content.substring(0, wordCount);
+			content = content.substring(0, wordCount) + "...";
 			article.setContent(content);
 		}
 		
