@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.article.Article;
+import model.article.ArticleProcessing;
 import model.article.GetArticlesLogic;
 import model.article.PostArticleLogic;
 import validator.ArticleValidator;
@@ -80,7 +81,11 @@ public class ArticleEditController extends HttpServlet {
 		    if (isUpdated) {
 		        
 		        GetArticlesLogic getArticlesLogic = new GetArticlesLogic();
-		        List<Article> articles = getArticlesLogic.getArticles();
+		        List<Article> articles = getArticlesLogic.getArticles();		
+		        
+		        //「内容」の文字数を45文字以内に調整、「タイトル」を10文字に調整
+		        ArticleProcessing articleProcessing = new ArticleProcessing();
+		        articleProcessing.reduceTheWord(articles, 10, 45);
 		        
 		        //記事管理画面表示用にリクエストスコープにセット
 		        request.setAttribute("articles", articles);

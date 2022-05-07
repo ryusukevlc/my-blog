@@ -1,7 +1,6 @@
 package controller.admin.articleManagement;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -12,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.article.Article;
+import model.article.ArticleProcessing;
 import model.article.GetArticlesLogic;
 import model.article.PostArticleLogic;
 
@@ -35,12 +35,17 @@ public class ArticlesController extends HttpServlet {
     	
     		//articleの取得
     		GetArticlesLogic getArticlesLogic = new GetArticlesLogic();
-    		ArrayList<Article> articles = getArticlesLogic.getArticles();
+    		List<Article> articles = getArticlesLogic.getArticles();
     		
     		//値チェック
     		if (articles != null && articles.size() > 0) {
+    			
+		        //「内容」の文字数を45文字以内に調整、「タイトル」を10文字に調整
+		        ArticleProcessing articleProcessing = new ArticleProcessing();
+		        articleProcessing.reduceTheWord(articles, 10, 45);
+    			
     			//リクエストスコープに登録
-    			request.setAttribute("articles", articles);			
+    			request.setAttribute("articles", articles);
     		}
     		
     		//記事管理画面に遷移
@@ -72,6 +77,11 @@ public class ArticlesController extends HttpServlet {
 	            //記事管理画面表示用に全記事を取得する
 	            GetArticlesLogic getArticlesLogic = new GetArticlesLogic();
 	            List<Article> articles = getArticlesLogic.getArticles();
+	            
+		        //「内容」の文字数を45文字以内に調整、「タイトル」を10文字に調整
+		        ArticleProcessing articleProcessing = new ArticleProcessing();
+		        articleProcessing.reduceTheWord(articles, 10, 45);
+		        
 	            
 	            //全記事をリクエストスコープにセットする
 	            request.setAttribute("articles", articles);

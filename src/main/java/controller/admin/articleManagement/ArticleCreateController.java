@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.article.Article;
+import model.article.ArticleProcessing;
 import model.article.GetArticlesLogic;
 import model.article.PostArticleLogic;
 import validator.ArticleValidator;
@@ -70,6 +71,10 @@ public class ArticleCreateController extends HttpServlet {
 	            //記事管理画面に表示する用の記事をarticlesテーブルから取得する。
 	            GetArticlesLogic getArticlesLogic = new GetArticlesLogic();
 	             List<Article> articles = getArticlesLogic.getArticles();
+	             
+		        //「内容」の文字数を45文字以内に調整、「タイトル」を10文字に調整
+		        ArticleProcessing articleProcessing = new ArticleProcessing();
+		        articleProcessing.reduceTheWord(articles, 10, 45);
 	             
 	            //記事管理画面に表示する用の記事をリクエストスコープにセットする
 	            request.setAttribute("articles", articles);
