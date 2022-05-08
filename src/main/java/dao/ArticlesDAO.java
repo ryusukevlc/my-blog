@@ -208,7 +208,7 @@ public class ArticlesDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		
-		String sql = "INSERT INTO articles (title, content) VALUES ( ?, ? )";
+		String sql = "INSERT INTO articles (title, content, created_at) VALUES ( ?, ?, current_timestamp )";
 		
 		try {
 			con = getConnection();
@@ -259,7 +259,7 @@ public class ArticlesDAO {
 	    Connection con = null;
 	    PreparedStatement pstmt = null;
 	    
-	    String sql = "update articles set title = ?, content = ? where id = ?";
+	    String sql = "update articles set title = ?, content = ?, updated_at = current_timestamp where id = ?";
 	    
 	    try {
 	        con = getConnection();
