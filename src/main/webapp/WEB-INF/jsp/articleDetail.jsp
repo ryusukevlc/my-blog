@@ -16,7 +16,9 @@ Article article = (Article)request.getAttribute("article");
     <div class="grid-container" style="min-height: 100vh;">
         <div class="grid-x grid-margin-x" style="">
             <p class="cell small-2" style="">作成日：<%= article.getCreated_at() %></p>
-            <p class="cell small-2" style="">更新日：<%= article.getUpdated_at() %></p>
+            <% if (article.getUpdated_at() != null) { %>
+                <p class="cell small-2" style="">更新日：<%= article.getUpdated_at() %></p>
+            <% } %>
         </div>
         <h3 class="cell" style="text-align: center;"><%= article.getTitle() %></h3>
         <div class="cell" style="text-align: center;">
