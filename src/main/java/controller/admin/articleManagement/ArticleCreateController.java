@@ -57,9 +57,15 @@ public class ArticleCreateController extends HttpServlet {
         article.setTitle(title);
         article.setContent(content);
         
-        //バリデーション htmlインジェクション対策等もここで行う。
+        //バリデーション
         ArticleValidator articleValidator = new ArticleValidator();
         List<String> errors = articleValidator.postValidate(article);
+        
+        ArticleProcessing articleProcessing = new ArticleProcessing();
+        
+        //htmlインジェクション対策のため、タイトルと内容のタグを実体参照に変換する
+        articleProcessing.convertTagTitle(article);
+        articleProcessing.convertTagContent(article);
         
         //バリデーションが問題無い場合
         if (errors.isEmpty()) {
@@ -70,10 +76,9 @@ public class ArticleCreateController extends HttpServlet {
             if(isAdded) {
 	            //記事管理画面に表示する用の記事をarticlesテーブルから取得する。
 	            GetArticlesLogic getArticlesLogic = new GetArticlesLogic();
-	             List<Article> articles = getArticlesLogic.getArticles();
-	             
+	            List<Article> articles = getArticlesLogic.getArticles();
+		        
 		        //「内容」の文字数を45文字以内に調整、「タイトル」を10文字に調整
-		        ArticleProcessing articleProcessing = new ArticleProcessing();
 		        articleProcessing.reduceTheWord(articles, 10, 45);
 	             
 	            //記事管理画面に表示する用の記事をリクエストスコープにセットする
@@ -82,10 +87,11 @@ public class ArticleCreateController extends HttpServlet {
 	            //記事管理画面にフォワードする
 	            RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/admin/articleManagement/articles.jsp");
 	            dispatcher.forward(request, response);
+	            
             } else {
             	System.out.println("記事を作成できませんでした。");
             }
-            
+
         } else {
             //入力値に問題がある場合
             //バリデーション結果をリクエストスコープにセットする

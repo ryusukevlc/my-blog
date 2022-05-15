@@ -67,9 +67,15 @@ public class ArticleEditController extends HttpServlet {
 	    article.setTitle(title);
 	    article.setContent(content);
 	    
-	    //バリデーション htmlインジェクション対策等もここで行う
+	    //バリデーション
 	    ArticleValidator validator = new ArticleValidator();
 	    List<String> errors = validator.postValidate(article);
+	    
+	    ArticleProcessing articleProcessing = new ArticleProcessing();
+	    
+        //htmlインジェクション対策のため、タイトルと内容のタグを実体参照に変換する
+        articleProcessing.convertTagTitle(article);
+        articleProcessing.convertTagContent(article);
 	    
 	    //バリデーションの結果、問題がない場合
 	    if (errors.isEmpty()) {
@@ -84,7 +90,6 @@ public class ArticleEditController extends HttpServlet {
 		        List<Article> articles = getArticlesLogic.getArticles();		
 		        
 		        //「内容」の文字数を45文字以内に調整、「タイトル」を10文字に調整
-		        ArticleProcessing articleProcessing = new ArticleProcessing();
 		        articleProcessing.reduceTheWord(articles, 10, 45);
 		        
 		        //記事管理画面表示用にリクエストスコープにセット
