@@ -15,6 +15,7 @@ under construction :construction:
 - figma (for screen flow diagram)
 
 ## WebAPI
+- open-meteo
 
 ## Testing Framework & Library
 - JUnit5
