@@ -15,6 +15,7 @@ under construction :construction:
 - figma (for screen flow diagram)
 
 ## WebAPI
+- open-meteo
 
 ## Testing Framework & Library
 - JUnit5
@@ -25,6 +26,9 @@ under construction :construction:
 
 ## Application Server
 - Tomcat
+
+## Mark Down Parser
+- flexmark-java
 
 ## VPS
 - さくらのVPS
