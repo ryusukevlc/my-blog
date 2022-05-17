@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.article.Article;
 import model.article.GetArticlesLogic;
+import model.webAPI.WebAPIProcessing;
 
 
 @WebServlet("/home")
@@ -47,9 +48,14 @@ public class IndexController extends HttpServlet {
 	            }
 	        }
 	        
-	           //リクエストスコープに登録
+	        //現在時間の東京の天気を取得する
+	        WebAPIProcessing webAPIProcessing = new WebAPIProcessing(); 
+	        String weather = webAPIProcessing.getWeatherInTokyo();
+	        
+	        //リクエストスコープに登録
             request.setAttribute("articles", articles);
             request.setAttribute("titles", titles);
+            request.setAttribute("weather", weather);
 	        
 		}
 		
