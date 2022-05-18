@@ -5,13 +5,16 @@
 
 <%
 Article article = (Article)request.getAttribute("article");
+int weather = (int)request.getAttribute("weather");
 %>
     
 <!DOCTYPE html>
 <html>
     <%@ include file="/WEB-INF/jsp/viewerCommon/head.jsp" %>
 <body>
-    <%@ include file="/WEB-INF/jsp/viewerCommon/header.jsp" %>
+    <jsp:include page="/WEB-INF/jsp/viewerCommon/header.jsp">
+          <jsp:param name="weather" value="<%=weather %>" />
+    </jsp:include>
 
     <div class="grid-container" style="min-height: 100vh;">
         <div class="grid-x grid-margin-x" style="">

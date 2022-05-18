@@ -11,13 +11,16 @@
 <%
 ArrayList<Article> articles = (ArrayList<Article>) request.getAttribute("articles");
 List<String> titles = (List<String>)request.getAttribute("titles");
+int weather = (int)request.getAttribute("weather");
 %>   
 
 <!DOCTYPE html>
 <html>
   <%@ include file="/WEB-INF/jsp/viewerCommon/head.jsp" %>
 <body>
-    <%@ include file="/WEB-INF/jsp/viewerCommon/header.jsp" %>
+    <jsp:include page="/WEB-INF/jsp/viewerCommon/header.jsp">
+          <jsp:param name="weather" value="<%=weather %>" />
+    </jsp:include>
     
     <!-- 取得した記事を表示する -->
      <% if (articles != null && articles.size() > 0) { %>
