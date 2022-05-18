@@ -31,7 +31,7 @@ int weather = (int)request.getAttribute("weather");
             <div class="card" style="height: 380px;">
                 <img alt="dummy" src="http://placekitten.com/g/640/340">
                 <div class="card-divider" style="background-color: white;">
-                    <object><a href="#" style="color: white;">tags（仮）</a></object><!-- あとで実装する -->
+                    <object><a href="#" style="">tags（仮）</a></object><!-- あとで実装する -->
                 </div>
                 <div class="card-section" style="position: relative;">
                     <h5 style='font-family: "游ゴシック", "Yu Gothic";'><strong><%= titles.get(i)  %></strong></h5>
