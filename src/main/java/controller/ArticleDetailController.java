@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.article.Article;
 import model.article.GetArticlesLogic;
+import model.webAPI.WebAPIProcessing;
 
 
 
@@ -31,9 +32,14 @@ public class ArticleDetailController extends HttpServlet {
 	    GetArticlesLogic getArticlesLogic = new GetArticlesLogic();
 	    Article article = getArticlesLogic.getOneOfArticles(id);
 	    
+        //現在時間の東京の天気を取得する
+        WebAPIProcessing webAPIProcessing = new WebAPIProcessing(); 
+        int weather = webAPIProcessing.getWeatherInTokyo();
+	    
 	    //記事が取得できた場合
 	    if (article != null) {
 	        request.setAttribute("article", article);
+            request.setAttribute("weather", weather);
 	        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/articleDetail.jsp");
 	        dispatcher.forward(request, response);
 	    } else {

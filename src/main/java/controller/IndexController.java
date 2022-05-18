@@ -50,7 +50,7 @@ public class IndexController extends HttpServlet {
 	        
 	        //現在時間の東京の天気を取得する
 	        WebAPIProcessing webAPIProcessing = new WebAPIProcessing(); 
-	        String weather = webAPIProcessing.getWeatherInTokyo();
+	        int weather = webAPIProcessing.getWeatherInTokyo();
 	        
 	        //リクエストスコープに登録
             request.setAttribute("articles", articles);

@@ -21,10 +21,10 @@ public class WebAPIProcessing {
 	 * 東京の天気を取得する
 	 * 
 	 */
-	public String getWeatherInTokyo() {
+	public int getWeatherInTokyo() {
 
 		// webAPIのURL
-		String openMeteoUrl = "https://api.open-meteo.com/v1/forecast?latitude=35.6785&longitude=139.6823&daily=weathercode&timezone=Asia%2FTokyo";
+		String openMeteoUrl = "https://api.open-meteo.com/v1/forecast?latitude=35.6785&longitude=139.6823&hourly=weathercode&timezone=Asia%2FTokyo";
 
 		// 結果を格納する変数
 		String result = "";
@@ -63,7 +63,7 @@ public class WebAPIProcessing {
 
 		JSONObject hourly = json.getJSONObject("hourly");
 		JSONArray weatherCode = hourly.getJSONArray("weathercode");
-		String weatherCodeNow = weatherCode.getString(0);
+		int weatherCodeNow = weatherCode.getInt(0);
 
 		return weatherCodeNow;
 
