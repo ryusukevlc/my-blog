@@ -28,6 +28,8 @@
         	<i class="fa-solid fa-smog"></i>
         <%} else if (weather == 80) {%>
         	<i class="fa-solid fa-cloud-sun-rain"></i>
+        <%} else {%>
+        	<i></i>
         <%} %>
         </h2>
     </div>
