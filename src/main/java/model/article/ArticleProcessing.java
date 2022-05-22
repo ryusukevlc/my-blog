@@ -6,8 +6,8 @@ import java.util.stream.Collectors;
 public class ArticleProcessing {
 	
 	/**
-	 * reduceTheWord
 	 * タイトルと内容を指定した文字数に制限する。
+	 * 
 	 * @param articles 記事リスト
 	 * @param wordCountTitle 制限する文字数（タイトル）
 	 * @param wordCountContent 制限する文字数（内容）
@@ -19,8 +19,8 @@ public class ArticleProcessing {
 	
 	
 	/**
-	 * reduceTheWordOfTitle
 	 * 記事一覧表示時に、「タイトル」を指定した文字数に制限する処理。
+	 * 
 	 * @param article 記事
 	 * @param wordCount 文字数
 	 * @return Article 記事
@@ -37,8 +37,8 @@ public class ArticleProcessing {
 	
 	
 	/**
-	 * reduceTheWordOfContent　
 	 * 記事一覧表示時に、「内容」を指定した文字数に制限する処理。
+	 * 
 	 * @param article 記事
 	 * @param wordCount 文字数
 	 * @return Article　記事
@@ -56,8 +56,8 @@ public class ArticleProcessing {
 	
 	
 	/**
-	 * convertTagForHtmlInjection
-	 * htmlタグを実体参照に変換する。（htmlインジェクション対策のため）
+	 * タイトルのhtmlタグを実体参照に変換する。（htmlインジェクション対策のため）
+	 * 
 	 * @param article 記事
 	 */
 	public void convertTagTitle(Article article) {
@@ -84,6 +84,12 @@ public class ArticleProcessing {
         }
 	}
 	
+	
+	/**
+	 * 内容のhtmlタグを実体参照に変換する。（htmlインジェクション対策のため）
+	 * 
+	 * @param article 記事
+	 */
 	public void convertTagContent(Article article) {
 		
 		String content = article.getContent();
@@ -108,5 +114,5 @@ public class ArticleProcessing {
         	article.setContent(changedContent);
         }
 	}
-
+	
 }

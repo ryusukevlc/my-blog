@@ -30,6 +30,7 @@ public class WebAPIProcessing {
 
 		// 結果を格納する変数
 		String result = "";
+		
 		HttpURLConnection con = null;
 		BufferedReader in = null;
 
@@ -61,6 +62,7 @@ public class WebAPIProcessing {
 			con.disconnect();
 		}
 
+		//取得結果をjsonに変換する
 		JSONObject json = new JSONObject(result);
 
 		JSONObject hourly = json.getJSONObject("hourly");
@@ -76,6 +78,7 @@ public class WebAPIProcessing {
 		
 		int index = 0;
 		
+		//現在時刻のインデックスを取得する
 		for (int i = 0 ; i < timeArray.length() ; i++) {
 			if (formattedDateTime.equals(timeArray.get(i))) {
 				index = i;
@@ -84,6 +87,8 @@ public class WebAPIProcessing {
 		
 		
 		JSONArray weatherCodeArray = hourly.getJSONArray("weathercode");
+		
+		//取得したインデックスから天気コードを取得する
 		int weatherCode = weatherCodeArray.getInt(index);
 
 		return weatherCode;
