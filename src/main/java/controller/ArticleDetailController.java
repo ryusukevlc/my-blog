@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.article.Article;
+import model.article.ArticleProcessing;
 import model.article.GetArticlesLogic;
 import model.webAPI.WebAPIProcessing;
 
@@ -35,6 +36,10 @@ public class ArticleDetailController extends HttpServlet {
         //現在時間の東京の天気を取得する
         WebAPIProcessing webAPIProcessing = new WebAPIProcessing(); 
         int weather = webAPIProcessing.getWeatherInTokyo();
+        
+        ArticleProcessing articleProcessing = new ArticleProcessing();
+        articleProcessing.parseMarkDown(article);
+        
 	    
 	    //記事が取得できた場合
 	    if (article != null) {
@@ -46,9 +51,6 @@ public class ArticleDetailController extends HttpServlet {
 	        //記事が取得できなかった場合
 	        
 	    }
-	    
-	    
-	    
 	    
 	}
 

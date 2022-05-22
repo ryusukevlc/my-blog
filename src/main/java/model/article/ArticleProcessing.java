@@ -3,6 +3,10 @@ package model.article;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import com.vladsch.flexmark.html.HtmlRenderer;
+import com.vladsch.flexmark.parser.Parser;
+import com.vladsch.flexmark.util.ast.Document;
+
 public class ArticleProcessing {
 	
 	/**
@@ -115,4 +119,22 @@ public class ArticleProcessing {
         }
 	}
 	
+	/**
+	 * markdown（内容）をパースする
+	 * 
+	 * @param article 記事
+	 */
+	public void parseMarkDown(Article article) {
+		
+		String content = article.getContent();
+		
+		Parser parser = Parser.builder().build();
+		HtmlRenderer renderer = HtmlRenderer.builder().build();
+		
+		Document document = parser.parse(content);
+		String html = renderer.render(document);
+		
+		article.setContent(html);
+		
+	}
 }
