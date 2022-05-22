@@ -23,8 +23,8 @@ int weather = (int)request.getAttribute("weather");
                 <p class="cell small-2" style="">更新日：<%= article.getUpdated_at() %></p>
             <% } %>
         </div>
-        <h3 class="cell" style="text-align: center;"><%= article.getTitle() %></h3>
-        <div class="cell" style="text-align: center;">
+        <h3 class="cell" style="text-align: center; margin: 30px 0px;"><%= article.getTitle() %></h3>
+        <div class="cell" style="margin: 50px 0px ; white-space: pre-wrap;">
             <%= article.getContent() %>
         </div>
     </div>
