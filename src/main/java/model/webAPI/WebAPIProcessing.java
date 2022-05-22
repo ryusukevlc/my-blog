@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -62,10 +64,29 @@ public class WebAPIProcessing {
 		JSONObject json = new JSONObject(result);
 
 		JSONObject hourly = json.getJSONObject("hourly");
-		JSONArray weatherCode = hourly.getJSONArray("weathercode");
-		int weatherCodeNow = weatherCode.getInt(0);
+		JSONArray timeArray = hourly.getJSONArray("time");
+		
+		LocalDateTime nowDate = LocalDateTime.now();
+		DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH");
+		
+		String formattedDate = nowDate.format(dateFormatter);
+		String formattedTime = nowDate.format(timeFormatter);
+		String formattedDateTime = formattedDate + "T" + formattedTime + ":00";
+		
+		int index = 0;
+		
+		for (int i = 0 ; i < timeArray.length() ; i++) {
+			if (formattedDateTime.equals(timeArray.get(i))) {
+				index = i;
+			}
+		}
+		
+		
+		JSONArray weatherCodeArray = hourly.getJSONArray("weathercode");
+		int weatherCode = weatherCodeArray.getInt(index);
 
-		return weatherCodeNow;
+		return weatherCode;
 
 	}
 
