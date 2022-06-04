@@ -1,4 +1,3 @@
-# Morgenrot
 personal Blog site.
 
 under construction :construction:
