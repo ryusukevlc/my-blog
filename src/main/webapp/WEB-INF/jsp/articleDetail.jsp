@@ -11,6 +11,7 @@ int weather = (int)request.getAttribute("weather");
 <!DOCTYPE html>
 <html>
     <%@ include file="/WEB-INF/jsp/viewerCommon/head.jsp" %>
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/articleDetail.css">
 <body>
     <jsp:include page="/WEB-INF/jsp/viewerCommon/header.jsp">
           <jsp:param name="weather" value="<%=weather %>" />

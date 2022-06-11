@@ -13,8 +13,8 @@
 <header style="margin-bottom: 30px;">
     <div class="title-bar" style="position: relative;">
         <h1 class="title-bar-title" style="margin: 10px;">
-            <a href="/Morgenrot/home" style="color: white;">
-                Morgenrot <i class="fa-solid fa-mountain-sun" style="color:red;"></i>
+            <a href="/RyusukeBlog/home" style="color: white;">
+                RyusukeBlog <i class="fa-solid fa-mountain-sun" style="color:red;"></i>
             </a>
         </h1>
         <h2 style="position: absolute; right: 40px; margin: auto 0;">

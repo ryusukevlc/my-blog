@@ -1,8 +1,8 @@
 ```mermaid
 graph LR
 
-  id_0[Morgenrot アプリケーション]-->id_1["管理者ログイン画面：一般＆管理者"]
-  id_0[Morgenrot アプリケーション]-->id_2["home画面：一般"]
+  id_0[RyusukeBlog アプリケーション]-->id_1["管理者ログイン画面：一般＆管理者"]
+  id_RyusukeBlogot アプリケーション]-->id_2["home画面：一般"]
   
     id_1-->id_1_1["管理画面：管理者"]
     id_2-->id_2_1["記事詳細画面：一般"]

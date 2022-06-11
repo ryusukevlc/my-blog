@@ -3,7 +3,7 @@
 
 <header class="top-bar">
     <div class="top-bar-left">
-        <h1>Morgenrot</h1>
+        <h1>RyusukeBlog</h1>
     </div>
     <div class="top-bar-right">
     </div>

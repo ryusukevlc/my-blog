@@ -11,6 +11,6 @@
     <!-- font-awesome CDN -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/all.css" integrity="sha384-/frq1SRXYH/bSyou/HUp/hib7RVN1TawQYja658FEOodR/FQBKVqT9Ol+Oz3Olq5" crossorigin="anonymous">
     
-    <script type="text/javascript" src="/Morgenrot/js/main.js"></script>
-<title>Morgenrot</title>
+    <script type="text/javascript" src="/RyusukeBlog/js/main.js"></script>
+<title>RyusukeBlog</title>
 </head>
