@@ -16,7 +16,7 @@ import model.article.GetArticlesLogic;
 import model.webAPI.WebAPIProcessing;
 
 
-@WebServlet("/home")
+@WebServlet("/")
 public class IndexController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
