@@ -13,7 +13,7 @@
 <header style="margin-bottom: 30px;">
     <div class="title-bar" style="position: relative;">
         <h1 class="title-bar-title" style="margin: 10px;">
-            <a href="/" style="color: white;">
+            <a href="/" style="color: white; font-size: 40px;">
                 RyusukeBlog <i class="fa-solid fa-mountain-sun" style="color:red;"></i>
             </a>
         </h1>
