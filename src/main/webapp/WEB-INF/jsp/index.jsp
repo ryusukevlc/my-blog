@@ -27,7 +27,7 @@ int weather = (int)request.getAttribute("weather");
      <div class="grid-container">
      <div class="grid-x grid-margin-x small-up-3 ">
     <% for(int i = 0 ; articles.size() > i ; i++) { %>
-        <a href="/RyusukeBlog/articleDetail?id=<%= articles.get(i).getId() %>" class="cell">
+        <a href="/articleDetail?id=<%= articles.get(i).getId() %>" class="cell">
             <div class="card" style="height: 380px;">
                 <img alt="dummy" src="http://placekitten.com/g/640/340">
                 <div class="card-divider" style="background-color: white;">

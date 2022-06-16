@@ -20,7 +20,7 @@ List<String> errors = (List<String>)request.getAttribute("errors");
     <%@ include file="/WEB-INF/jsp/admin/common/header.jsp" %>
     <div class="grid-container">
     
-    <form action="/RyusukeBlog/admin/articleManagement/articleEdit" method="post">
+    <form action="/admin/articleManagement/articleEdit" method="post">
         <label for="title">タイトル</label>
         <input type="text" name="title" placeholder="タイトル" value="<%= article.getTitle() %>">
         <label for="content" class="padding-3">内容</label>
@@ -35,7 +35,7 @@ List<String> errors = (List<String>)request.getAttribute("errors");
         <% } %>
     <% } %>
     
-    <a href="/RyusukeBlog/admin/articleManagement/articles">記事管理画面に戻る</a>
+    <a href="/admin/articleManagement/articles">記事管理画面に戻る</a>
     
     </div>
     <%@ include file="/WEB-INF/jsp/admin/common/footer.jsp" %>

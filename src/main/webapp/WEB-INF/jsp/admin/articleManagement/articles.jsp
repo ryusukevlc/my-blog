@@ -17,7 +17,7 @@ ArrayList<Article> articles = (ArrayList<Article>) request.getAttribute("article
 <div class="grid-container">
 <div class="grid-x grid-margin-x">
     
-    <a class="button" href="/RyusukeBlog/admin/articleManagement/articleCreate">作成</a>
+    <a class="button" href="/admin/articleManagement/articleCreate">作成</a>
 
     <table class="hover">
         <thead>
@@ -33,10 +33,10 @@ ArrayList<Article> articles = (ArrayList<Article>) request.getAttribute("article
                     <td><%= article.getTitle() %></td>
                     <td><%= article.getContent() %></td>
                     <td style="text-align:right; ">
-                        <a class="small success button" href="/RyusukeBlog/admin/articleManagement/articleEdit?id=<%= article.getId() %>">編集</a>
+                        <a class="small success button" href="/admin/articleManagement/articleEdit?id=<%= article.getId() %>">編集</a>
                     </td>
                    <td style="">
-                    <form action="/RyusukeBlog/admin/articleManagement/articles" method="post" name="deleteForm">
+                    <form action="/admin/articleManagement/articles" method="post" name="deleteForm">
                         <input type="hidden" name="id" value="<%= article.getId() %>">
                         <input type="hidden" name="type" value="delete">
                         <button class="small alert button" onclick=" return articleDelete()">削除</button>
@@ -53,7 +53,7 @@ ArrayList<Article> articles = (ArrayList<Article>) request.getAttribute("article
     </table>
     
     
-    <a href="/RyusukeBlog/admin/portal">ポータルへ戻る</a>
+    <a href="/admin/portal">ポータルへ戻る</a>
     
 </div>
 </div>

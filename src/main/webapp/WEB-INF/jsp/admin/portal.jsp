@@ -6,8 +6,8 @@
 <body>
     <%@ include file="/WEB-INF/jsp/admin/common/header.jsp" %>
     <div class="grid-container">
-        <a class="expanded button" href="/RyusukeBlog/admin/articleManagement/articles">記事管理</a>
-        <a class="expanded button" href="/RyusukeBlog/home">home</a>
+        <a class="expanded button" href="/admin/articleManagement/articles">記事管理</a>
+        <a class="expanded button" href="/">home</a>
     </div>
     <%@ include file="/WEB-INF/jsp/admin/common/footer.jsp" %>
 </body>
