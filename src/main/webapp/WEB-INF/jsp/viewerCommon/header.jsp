@@ -13,7 +13,7 @@
 <header style="margin-bottom: 30px;">
     <div class="title-bar" style="position: relative;">
         <h1 class="title-bar-title" style="margin: 10px;">
-            <a href="/" style="color: white; font-size: 40px;">
+            <a href="/" style="color: white; font-size: 40px; font-size: 40px;">
                 RyusukeBlog <i class="fa-solid fa-mountain-sun" style="color:red;"></i>
             </a>
         </h1>
@@ -42,7 +42,7 @@
                 <li><a href="#" id="menu-cell"><strong>Launch Info</strong></a></li>
                 <li><a href="#" id="menu-cell"><strong>Contact</strong></a></li>
                 <li><a href="#" id="menu-cell"><strong>Admin Info</strong></a></li>
-                <li><a href="#" id="menu-cell"><strong>Other</strong></a></li>
+                <li><a href="#" id="menu-cell" style=""><strong>Other</strong></a></li>
             </ul>
         </div>
     </div>
