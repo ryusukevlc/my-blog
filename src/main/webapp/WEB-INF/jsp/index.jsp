@@ -28,13 +28,13 @@ int weather = (int)request.getAttribute("weather");
      <div class="grid-x grid-margin-x small-up-3 ">
     <% for(int i = 0 ; articles.size() > i ; i++) { %>
         <a href="/articleDetail?id=<%= articles.get(i).getId() %>" class="cell">
-            <div class="card" style="height: 380px;">
+            <div class="card" style="height: 340px;">
                 <img alt="dummy" src="http://placekitten.com/g/640/340">
-                <div class="card-divider" style="background-color: white;">
-                    <object><a href="#" style="">tags（仮）</a></object><!-- あとで実装する -->
+                <div class="card-divider" style="background-color: white; height: 20px;">
+                    <object style=" position: relative; top: -10px;"><a href="#" class="tag">tags（仮）</a></object><!-- あとで実装する -->
                 </div>
                 <div class="card-section" style="position: relative;">
-                    <h5 style='font-family: "游ゴシック", "Yu Gothic";'><strong><%= titles.get(i)  %></strong></h5>
+                    <h5 style='font-family: "游ゴシック", "Yu Gothic"; font-size: 15px; position: relative; top: -10px;'><strong><%= titles.get(i)  %></strong></h5>
                     <small style="position:absolute; bottom: 20px;"><%= articles.get(i).getCreated_at() %></small>
                 </div>
             </div>
@@ -49,4 +49,9 @@ int weather = (int)request.getAttribute("weather");
     <%} %>
         <%@ include file="/WEB-INF/jsp/viewerCommon/footer.jsp" %>
 </body>
+<style>
+.cell {
+
+}
+</style>
 </html>

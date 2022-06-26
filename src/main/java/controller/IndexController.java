@@ -37,7 +37,7 @@ public class IndexController extends HttpServlet {
 			
 		     //タイトルを指定文字数以内に加工する（js書きたくないからここに書いちゃいます）
 	        List<String> titles = new ArrayList<>();
-	        int charNum = 30;
+	        int charNum = 60;
 	        for (Article article : articles) {
 	            String title = article.getTitle();
 	            if (title.length() > charNum) {

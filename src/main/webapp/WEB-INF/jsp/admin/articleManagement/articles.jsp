@@ -60,4 +60,22 @@ ArrayList<Article> articles = (ArrayList<Article>) request.getAttribute("article
     
     <%@ include file="/WEB-INF/jsp/admin/common/footer.jsp" %>
 </body>
+
+<script type="text/javascript">
+
+//記事を削除する時のダイアログ表示
+function articleDelete() {
+	var result = window.confirm("削除しますか？");
+	
+	if (result) {
+		console.log('OKがクリックされました');
+		return true;
+	} else {
+		console.log('キャンセルがクリックされました');
+		return false;
+	}
+	
+}
+</script>
+
 </html>
