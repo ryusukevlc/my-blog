@@ -1,7 +1,7 @@
 # RyusukeBlog
-personal Blog site.
+personal Blog site.  
+https://ryusukeblog.info/
 
-under construction :construction:
 
 ## Languages 
 - Java
