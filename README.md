@@ -35,3 +35,9 @@ https://ryusukeblog.info/
 
 ## Links
 - [screen flow diagram](screenFlowDiagram.md)
+
+## やったこと
+- VPSにapacheとtomcatを入れてサーバーを構築
+- アプリケーションの実装
+- ドメインの取得
+- https化（lets encrypt）
