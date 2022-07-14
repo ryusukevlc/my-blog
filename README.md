@@ -39,5 +39,6 @@ https://ryusukeblog.info/
 ## やったこと
 - VPSにapacheとtomcatを入れてサーバーを構築
 - アプリケーションの実装
+- デプロイ
 - ドメインの取得
 - https化（lets encrypt）
